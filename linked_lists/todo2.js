@@ -51,12 +51,21 @@ class SLL{
         newSLL.head = orig;
         while(orig.next){
             count += 1;
+            newSLL.next = orig.next;
             orig = orig.next;
         }
-        orig.next = 
-        
-        
         return newSLL;
+    }
+    filter(headNode, lowVal, highVal){
+        var count = 0;
+        while(headNode.next){
+            if(headNode.value < lowVal || headNode.value > highVal ){
+                this.removeSelf(headNode.value);
+            }
+            headNode = headNode.next;
+            count += 1;
+        }
+        return this;
     }
 }
 
@@ -71,15 +80,23 @@ secondNode.next = thirdNode;
 thirdNode.next = fourthNode;
 fourthNode.next = fifthNode;
 
+fNode = new Node(10);
+sNode = new Node(2);
+tNode = new Node(15);
+foNode = new Node (7);
+fiNode = new Node(5);
+
+fNode.next = sNode;
+sNode.next = tNode;
+tNode.next = foNode;
+foNode.next = fiNode;
+
 firstSLL = new SLL(firstNode);
+numSLL = new SLL(fNode);
 newSLL = new SLL();
 firstSLL.secondLast();
-y = firstSLL.removeSelf("Bill");
-firstSLL.view();
-x = firstSLL.copy();
-console.log("*");
-console.log(x);
-console.log("*");
-console.log(y);
+firstSLL.removeSelf("Bill");
+firstSLL.copy();
+numSLL.filter(fNode, 6, 11);
 
 
